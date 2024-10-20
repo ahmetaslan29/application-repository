@@ -1,0 +1,15 @@
+<h2>Kredi Hesaplama Uygulaması</h2>
+<div>
+  <label>Kredi Miktarı:</label>
+  <input type="number" [(ngModel)]="loanAmount" />
+
+  <label>Faiz Oranı (%):</label>
+  <input type="number" [(ngModel)]="interestRate" />
+
+  <label>Vade (Yıl):</label>
+  <input type="number" [(ngModel)]="loanTerm" />
+
+  <button (click)="calculate()">Hesapla</button>
+
+  <p>Aylık Ödeme: {{ monthlyPayment }}</p>
+</div>

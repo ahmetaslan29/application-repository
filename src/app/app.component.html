@@ -1,33 +1,7 @@
-<h1>Todo App</h1>
-@if(!ispUpdateWorkFormActive) {
-<div>
-  <label style="display:block;"> Work </label>
-  <input type="text" [(ngModel)]="work" />
-  <button (click)="save()">save</button>
-</div>
-}@else {
-
-<div>
-  <label style="display:block;"> Update Work </label>
-  <input type="text" [(ngModel)]="updateWork" />
-  <button (click)="update()">Update</button>
-</div>
-}
-
-<hr />
-<div>
-  <ul style="list-style-type: none;">
-    @for (data of todos; track data) {
-    <li style="margin-bottom: 8px;">
-      <p>{{ data }}</p>
-      @if(!ispUpdateWorkFormActive){
-        <div>
-          <button (click)="get($index)">Update</button>
-          <button (click)="delete($index)">Delete</button>
-        </div>
-
-      }
-    </li>
-    }
-  </ul>
-</div>
+<h1>Uygulama Deposu</h1>
+<nav>
+  <a routerLink="/todo">Todo Uygulaması</a>
+  <br/>
+  <a routerLink="/credit-calculator">Kredi Hesaplama Uygulaması</a>
+</nav>
+<router-outlet></router-outlet>
