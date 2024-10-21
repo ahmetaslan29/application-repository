@@ -1,11 +1,12 @@
 <h2>Todo List</h2>
-<div>
-  <label for="work">Work</label>
-  <input id="work" type="text" [(ngModel)]="work" />
-  <button (click)="save()">Save</button>
-</div>
 
-@if (ispUpdateWorkFormActive) {
+@if (!ispUpdateWorkFormActive) {
+  <div>
+    <label for="work">Work</label>
+    <input id="work" type="text" [(ngModel)]="work" />
+    <button (click)="save()">Save</button>
+  </div>
+} @else {
   <div>
     <label for="updateWork">Update Work</label>
     <input id="updateWork" type="text" [(ngModel)]="updateWork" />
@@ -18,7 +19,7 @@
   <ul>
     @for (data of todos; track data) {
       <li style="margin-bottom: 8px;">
-        <p>{{ data }}</p>
+        <p>{{ data.work }}</p>
         @if(!ispUpdateWorkFormActive){
           <div>
             <button (click)="get($index)">Update</button>

@@ -6,17 +6,36 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './credit-calculator.component.html',
-  styleUrls: ['./credit-calculator.component.css']
+  styleUrls: ['./credit-calculator.component.css'],
 })
 export class CreditCalculatorComponent {
-  loanAmount: number = 0;
-  interestRate: number = 0;
-  loanTerm: number = 0;
-  monthlyPayment: number = 0;
+  krediTutari: number = 0;
+  taksitler: number[] = [3, 6, 12, 24];
+  taksitSayisi: number = 3;
+  result: string = '';
+  odemePlani: { taksitTutari: number; kalanGeriOdeme: number }[] = [];
 
-  calculate() {
-    const rate = this.interestRate / 100 / 12;
-    const n = this.loanTerm * 12;
-    this.monthlyPayment = (this.loanAmount * rate) / (1 - Math.pow(1 + rate, -n));
+  hesapla() {
+    if (this.krediTutari <= 0) {
+      this.result = 'Lütfen geçerli bir kredi tutarı giriniz.';
+      this.odemePlani = [];
+      return;
+    }
+
+    const taksitTutari = (this.krediTutari / this.taksitSayisi) * 1.29;
+    let toplamGeriOdeme = taksitTutari * this.taksitSayisi;
+    this.result = `Taksit Tutarı: ${taksitTutari.toFixed(2)} - Taksit Sayısı: ${
+      this.taksitSayisi
+    } - Toplam Geri Ödeme: ${toplamGeriOdeme.toFixed(2)}`;
+
+    this.odemePlani = [];
+    for (let i = 0; i < this.taksitSayisi; i++) {
+      toplamGeriOdeme -= taksitTutari;
+      const data = {
+        taksitTutari: taksitTutari,
+        kalanGeriOdeme: toplamGeriOdeme,
+      };
+      this.odemePlani.push(data);
+    }
   }
 }

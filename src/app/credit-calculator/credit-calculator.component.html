@@ -1,15 +1,40 @@
-<h2>Kredi Hesaplama Uygulaması</h2>
+<h1>Kredi Hesaplama</h1>
+
 <div>
-  <label>Kredi Miktarı:</label>
-  <input type="number" [(ngModel)]="loanAmount" />
+  <label>Kredi Tutarı</label>
+  <input type="number" min="0" [(ngModel)]="krediTutari" />
 
-  <label>Faiz Oranı (%):</label>
-  <input type="number" [(ngModel)]="interestRate" />
-
-  <label>Vade (Yıl):</label>
-  <input type="number" [(ngModel)]="loanTerm" />
-
-  <button (click)="calculate()">Hesapla</button>
-
-  <p>Aylık Ödeme: {{ monthlyPayment }}</p>
+  <label>Taksit Sayısı</label>
+  <select [(ngModel)]="taksitSayisi">
+    @for (data of taksitler; track data) {
+    <option [value]="data">{{ data }}</option>
+    }
+  </select>
 </div>
+
+<div>
+  <button (click)="hesapla()">Hesapla</button>
+</div>
+
+<hr />
+
+<h1>{{ result }}</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Taksit Tutarı</th>
+      <th>Kalan Geri Ödeme</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (data of odemePlani; track data) {
+    <tr>
+      <td>{{ $index + 1 }}</td>
+      <td>{{ data.taksitTutari }}</td>
+      <td>{{ data.kalanGeriOdeme }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
