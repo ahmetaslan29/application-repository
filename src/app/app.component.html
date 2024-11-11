@@ -1,1 +1,24 @@
-<app-root></app-root>
+<header class="flex w-full gap-5 flex-col items-center p-3 text-black">
+  <div class="flex flex-col md:flex-row w-full gap-5 p-2">
+    <h1 class="font-bold min-w-40">UYGULAMA DEPOSU</h1>
+    <nav class="flex items-center gap-6 capitalize text-sm">
+      <a routerLink="app-repository/todo" class="cursor-pointer border-b border-transparent transition-colors hover:border-b-black">
+        Todo Uygulaması
+      </a>
+      <a routerLink="app-repository/credit-calculator" class="cursor-pointer border-b border-transparent transition-colors hover:border-b-black">
+        Kredi Hesaplama Uygulaması
+      </a>
+    </nav>
+  </div>
+  <div class="flex flex-col md:flex-row w-full gap-5 p-2">
+    <h1 class="font-bold min-w-40">ÖZELLİK DEPOSU</h1>
+    <nav class="flex items-center gap-6 capitalize text-sm">
+      <a routerLink="features/directive"class="cursor-pointer border-b border-transparent transition-colors hover:border-b-black">
+        Directive
+      </a>
+    </nav>
+  </div>
+</header>
+<main class="p-3">
+  <router-outlet></router-outlet>
+</main>

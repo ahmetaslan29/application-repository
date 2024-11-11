@@ -1,18 +1,27 @@
-import { Routes,Route, RouterModule } from '@angular/router';
-import { TodoComponent } from './todo/todo.component';
-import { CreditCalculatorComponent } from './credit-calculator/credit-calculator.component';
-import { LayoutsComponent } from './layouts/layouts.component';
+import { Routes, RouterModule } from '@angular/router';
+import {AppRepositoryLayoutsComponent} from './app-repository/app-repository-layout.component'
+import {FeaturesLayoutComponent} from './features/features-layout.component'
+
+import { TodoComponent } from './app-repository/todo/todo.component';
+import { CreditCalculatorComponent } from './app-repository/credit-calculator/credit-calculator.component';
 
 export const routes: Routes = [
+
   {
-    path: '',
-    component: LayoutsComponent,
+    path:'app-repository',
+    component: AppRepositoryLayoutsComponent,
     children:[
-      { path: '', redirectTo: '/todo', pathMatch: 'full' },
       { path: 'todo', component: TodoComponent },
       { path: 'credit-calculator', component: CreditCalculatorComponent }
     ]
-  }
+  },
+  {
+    path:'features',
+    component: FeaturesLayoutComponent,
+    children:[
+      { path: 'directive', component: TodoComponent },
+    ]
+  },
 
 ];
 
