@@ -1,29 +1,29 @@
 <h2>Todo List</h2>
 
-@if (!ispUpdateWorkFormActive) {
+@if (!todoService.ispUpdateWorkFormActive) {
   <div>
     <label for="work">Work</label>
-    <input id="work" type="text" [(ngModel)]="work" />
-    <button (click)="save()">Save</button>
+    <input id="work" type="text" [(ngModel)]="todoService.work" />
+    <button (click)="todoService.save()">Save</button>
   </div>
 } @else {
   <div>
     <label for="updateWork">Update Work</label>
-    <input id="updateWork" type="text" [(ngModel)]="updateWork" />
-    <button (click)="update()">Update</button>
+    <input id="updateWork" type="text" [(ngModel)]="todoService.updateWork" />
+    <button (click)="todoService.update()">Update</button>
   </div>
 }
 
 <br><hr />
 <div>
   <ul>
-    @for (data of todos; track data) {
+    @for (data of todoService.todos; track data) {
       <li style="margin-bottom: 8px;">
         <p>{{ data.work }}</p>
-        @if(!ispUpdateWorkFormActive){
+        @if(!todoService.ispUpdateWorkFormActive){
           <div>
-            <button (click)="get($index)">Update</button>
-            <button (click)="delete($index)">Delete</button>
+            <button (click)="todoService.get($index)">Update</button>
+            <button (click)="todoService.delete($index)">Delete</button>
           </div>
 
         }
